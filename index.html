@@ -10,7 +10,11 @@
   </head>
 
 <body>
-  <button class="mobile-nav-toggle">☰</button>
+  <!-- Theme checkbox - must be at the top level for CSS selector to work -->
+  <input type="checkbox" id="theme-checkbox" />
+  
+  <button class="mobile-nav-toggle" onclick="toggleMobileSidebar()">☰</button>
+  
   <nav>
     <div>
       <div class="logo">
@@ -23,11 +27,24 @@
 
       <ul class="boards-list">
         <li class="active">
-          <span class="board-icon"></span> Launch Career
+         <button><span>Launch Career</span></button>
         </li>
       </ul>
-
-      <button>Launch Career</button>
+      
+      <!-- Theme Switcher - Using labels for CSS-only functionality -->
+      <div class="theme-switcher">
+        <label for="theme-checkbox" class="theme-icon" title="Light Theme">☀️</label>
+        <label for="theme-checkbox" class="theme-toggle">
+          <span class="slider"></span>
+        </label>
+        <label for="theme-checkbox" class="theme-icon" title="Dark Theme">🌙</label>
+      </div>
+      
+      <!-- Hide Sidebar Button -->
+      <button class="hide-sidebar-btn" onclick="toggleSidebar()">
+        <span class="hide-icon">👁️</span>
+        Hide Sidebar
+      </button>
     </div>
   </nav>
 
