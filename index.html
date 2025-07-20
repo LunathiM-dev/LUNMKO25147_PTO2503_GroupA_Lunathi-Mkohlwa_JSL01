@@ -17,8 +17,16 @@
     <img src="logo-light.svg" alt="Kanban Logo" />
     </div>
 
-    <div>
+    <div class="boards-header">
       <h4>ALL BOARDS (1)</h4>
+    </div>
+
+    <ul class="boards-list">
+      <li class="active">
+        <span class="board-icon"></span> Launch Career
+      </li>
+    </ul>
+
       <button>Launch Career</button>
     </div>
   </nav>
@@ -35,7 +43,12 @@
             <span class="dot todo"></span>
             <h4>TO DO</h4>
           </div>
-          <div id="todo-tasks" class="task-list"></div>
+          <div id="todo-tasks" class="task-list">
+             <div class="task-card">Launch Epic Career 🚀</div>
+              <div class="task-card">Conquer React ⚛️</div>
+               <div class="task-card">Understand Databases⚙️</div>
+               <div class="task-card">Crush Frameworks 🖼️</div>
+          </div>
         </div>
 
         <!-- DOING Column -->
@@ -44,7 +57,10 @@
             <span class="dot doing"></span>
             <h4>DOING</h4>
           </div>
-          <div id="doing-tasks" class="task-list"></div>
+          <div id="doing-tasks" class="task-list">
+            <div class="task-card">Master JavaScript💛</div>
+            <div class="task-card">Never Give Up 🏆</div>
+          </div>
         </div>
 
         <!-- DONE Column -->
@@ -53,7 +69,10 @@
             <span class="dot done"></span>
             <h4>DONE</h4>
           </div>
-          <div id="done-tasks" class="task-list"></div>
+          <div id="done-tasks" class="task-list">
+            <div class="task-card">Explore ES6 Features 🚀</div>
+            <div class="task-card">Have fun 🥳</div>
+          </div>
         </div>
       </main>
     </div>
