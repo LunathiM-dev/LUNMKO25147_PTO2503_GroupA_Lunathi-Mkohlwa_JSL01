@@ -13,41 +13,45 @@
   <button class="mobile-nav-toggle">☰</button>
   <nav>
     <div>
-    <div class="logo">
-    <img src="logo-light.svg" alt="Kanban Logo" />
-    </div>
+      <div class="logo">
+        <img src="logo-light.svg" alt="Kanban Logo" />
+      </div>
 
-    <div class="boards-header">
-      <h4>ALL BOARDS (1)</h4>
-    </div>
+      <div class="boards-header">
+        <h4>ALL BOARDS (1)</h4>
+      </div>
 
-    <ul class="boards-list">
-      <li class="active">
-        <span class="board-icon"></span> Launch Career
-      </li>
-    </ul>
+      <ul class="boards-list">
+        <li class="active">
+          <span class="board-icon"></span> Launch Career
+        </li>
+      </ul>
 
       <button>Launch Career</button>
     </div>
   </nav>
 
-    <div class="main">
-      <header>
-        <h2>Launch Career</h2>
-      </header>
+  <div class="main">
+    <!-- New Top Header -->
+    <div class="top-header">
+      <h1>Launch Career</h1>
+      <button class="add-task-btn" onclick="openAddTaskModal()">+ Add New Task</button>
+    </div>
 
+    <div class="content-area">
       <main>
         <!-- TODO Column -->
         <div class="column">
           <div class="column-header">
             <span class="dot todo"></span>
             <h4>TO DO</h4>
+            <span class="task-count">(4)</span>
           </div>
           <div id="todo-tasks" class="task-list">
-             <div class="task-card">Launch Epic Career 🚀</div>
-              <div class="task-card">Conquer React ⚛️</div>
-               <div class="task-card">Understand Databases⚙️</div>
-               <div class="task-card">Crush Frameworks 🖼️</div>
+            <div class="task-card">Launch Epic Career 🚀</div>
+            <div class="task-card">Conquer React ⚛️</div>
+            <div class="task-card">Understand Databases⚙️</div>
+            <div class="task-card">Crush Frameworks 🖼️</div>
           </div>
         </div>
 
@@ -56,6 +60,7 @@
           <div class="column-header">
             <span class="dot doing"></span>
             <h4>DOING</h4>
+            <span class="task-count">(2)</span>
           </div>
           <div id="doing-tasks" class="task-list">
             <div class="task-card">Master JavaScript💛</div>
@@ -68,6 +73,7 @@
           <div class="column-header">
             <span class="dot done"></span>
             <h4>DONE</h4>
+            <span class="task-count">(2)</span>
           </div>
           <div id="done-tasks" class="task-list">
             <div class="task-card">Explore ES6 Features 🚀</div>
@@ -76,6 +82,32 @@
         </div>
       </main>
     </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="addTaskModal" class="modal">
+    <div class="modal-content">
+      <h3>Add New Task</h3>
+      <form id="addTaskForm">
+        <div class="form-group">
+          <label for="taskTitle">Title</label>
+          <input type="text" id="taskTitle" placeholder="e.g. Take coffee break" required>
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Status</label>
+          <select id="taskStatus" required>
+            <option value="todo">To Do</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" class="btn-secondary" onclick="closeAddTaskModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
     <script src="script.js"></script>
   </body>
