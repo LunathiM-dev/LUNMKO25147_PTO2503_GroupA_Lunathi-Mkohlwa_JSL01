@@ -8,35 +8,23 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   </head>
-
 <body>
-  <!-- Pure CSS Control Checkboxes -->
   <input type="checkbox" id="theme-checkbox" />
   <input type="checkbox" id="sidebar-checkbox" />
-  
-  <!-- Mobile Navigation Toggle -->
   <button class="mobile-nav-toggle" onclick="toggleMobileSidebar()">☰</button>
-  
-  <!-- Sidebar Navigation -->
   <nav>
     <div class="nav-content">
-      <!-- Logo Section -->
       <div class="logo">
         <img src="logo-light.svg" alt="Kanban Logo" />
       </div>
-
-      <!-- Boards Section -->
       <div class="boards-header">
         <h4>ALL BOARDS (1)</h4>
       </div>
-
       <ul class="boards-list">
         <li class="active">
          <button><span>Launch Career</span></button>
         </li>
       </ul>
-      
-      <!-- Theme Switcher -->
       <div class="theme-switcher">
         <label for="theme-checkbox" class="theme-icon" title="Light Theme">☀️</label>
         <label for="theme-checkbox" class="theme-toggle">
@@ -44,32 +32,22 @@
         </label>
         <label for="theme-checkbox" class="theme-icon" title="Dark Theme">🌙</label>
       </div>
-      
-      <!-- Hide Sidebar Button -->
       <label for="sidebar-checkbox" class="hide-sidebar-btn">
-        <span class="hide-icon">🔒</span>
+        <span class="hide-icon">🚫</span>
         Hide Sidebar
       </label>
     </div>
   </nav>
-
-  <!-- Show Sidebar Button (appears when sidebar is hidden) -->
   <label for="sidebar-checkbox" class="show-sidebar-btn">
     👁️
   </label>
-
-  <!-- Main Content Area -->
   <div class="main">
-    <!-- Top Header -->
     <div class="top-header">
       <h1>Launch Career</h1>
       <button class="add-task-btn" onclick="openAddTaskModal()">+ Add New Task</button>
     </div>
-
-    <!-- Content Area -->
     <div class="content-area">
       <main>
-        <!-- TODO Column -->
         <div class="column" data-status="todo">
           <div class="column-header">
             <span class="dot todo"></span>
@@ -82,8 +60,6 @@
             <div class="task-card" data-task-id="4">Crush Frameworks 🖼️</div>
           </div>
         </div>
-
-        <!-- DOING Column -->
         <div class="column" data-status="doing">
           <div class="column-header">
             <span class="dot doing"></span>
@@ -96,7 +72,6 @@
           </div>
         </div>
 
-        <!-- DONE Column -->
         <div class="column" data-status="done">
           <div class="column-header">
             <span class="dot done"></span>
@@ -111,24 +86,16 @@
       </main>
     </div>
   </div>
-
-  <!-- Add Task Modal -->
   <div id="addTaskModal" class="modal">
     <div class="modal-content">
-      <!-- Modal Header -->
       <div class="modal-header">
         <h3>Add New Task</h3>
         <button type="button" class="close-btn" onclick="closeAddTaskModal()">&times;</button>
       </div>
-      
-      <!-- Success Message -->
       <div id="successMessage" class="success-message">
         Task created successfully!
       </div>
-      
-      <!-- Task Form -->
       <form id="addTaskForm">
-        <!-- Title Field -->
         <div class="form-group">
           <label for="taskTitle">Title</label>
           <input 
@@ -137,12 +104,9 @@
             name="title"
             placeholder="e.g. Take coffee break" 
             required
-            maxlength="100"
-          >
+            maxlength="100">
           <div class="error-message">Please enter a task title</div>
         </div>
-        
-        <!-- Description Field -->
         <div class="form-group">
           <label for="taskDescription">Description</label>
           <textarea 
@@ -153,8 +117,6 @@
           ></textarea>
           <div class="error-message">Description is too long</div>
         </div>
-        
-        <!-- Status Field -->
         <div class="form-group">
           <label for="taskStatus">Status</label>
           <select id="taskStatus" name="status" required>
@@ -165,8 +127,6 @@
           </select>
           <div class="error-message">Please select a status</div>
         </div>
-        
-        <!-- Priority Field -->
         <div class="form-group">
           <label for="taskPriority">Priority</label>
           <select id="taskPriority" name="priority">
@@ -175,13 +135,9 @@
             <option value="high">High</option>
           </select>
         </div>
-        
-        <!-- Loading State -->
         <div id="taskLoading" class="loading">
           Creating task...
         </div>
-        
-        <!-- Modal Buttons -->
         <div class="modal-buttons">
           <button type="button" class="btn-secondary" onclick="closeAddTaskModal()">Cancel</button>
           <button type="submit" class="btn-primary" id="createTaskBtn">Create Task</button>
@@ -189,7 +145,5 @@
       </form>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

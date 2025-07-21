@@ -1,47 +1,4 @@
-/* ============================================================================= */
-/* CSS VARIABLES (THEME SYSTEM) */
-/* ============================================================================= */
 
-:root {
-  --bg-primary: #F4F7FD;
-  --bg-secondary: #FFFFFF;
-  --bg-nav: #FFFFFF;
-  --text-primary: #000112;
-  --text-secondary: #828FA3;
-  --border-color: #E4EBFA;
-  --shadow-light: rgba(54, 78, 126, 0.1);
-  --shadow-hover: rgba(54, 78, 126, 0.15);
-}
-
-[data-theme="dark"] {
-  --bg-primary: #20212C;
-  --bg-secondary: #2B2C37;
-  --bg-nav: #2B2C37;
-  --text-primary: #FFFFFF;
-  --text-secondary: #828FA3;
-  --border-color: #3E3F4E;
-  --shadow-light: rgba(54, 78, 126, 0.101545);
-  --shadow-hover: rgba(54, 78, 126, 0.15);
-}
-
-/* ============================================================================= */
-/* PURE CSS CONTROL CHECKBOXES */
-/* ============================================================================= */
-
-#theme-checkbox,
-#sidebar-checkbox {
-  display: none;
-}
-
-/* ============================================================================= */
-/* BASE LAYOUT */
-/* ============================================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -53,18 +10,44 @@ body {
   overflow-x: hidden;
   transition: all 0.3s ease;
 }
+:root {
+  --bg-primary: #f4f7fd;
+  --bg-secondary: #fff;
+  --bg-nav: #fff;
+  --text-primary: #000112;
+  --text-secondary: #828fa3;
+  --border-color: #e4ebfa;
+  --shadow-light: rgba(54, 78, 126, 0.1);
+  --shadow-hover: rgba(54, 78, 126, 0.15);
+}
 
-/* When sidebar is hidden */
+[data-theme="dark"] {
+  --bg-primary: #20212c;
+  --bg-secondary: #2b2c37;
+  --bg-nav: #2b2c37;
+  --text-primary: #fff;
+  --text-secondary: #828fa3;
+  --border-color: #3e3f4e;
+  --shadow-light: rgba(54, 78, 126, 0.1);
+  --shadow-hover: rgba(54, 78, 126, 0.15);
+}
+
+#theme-checkbox,
+#sidebar-checkbox {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #sidebar-checkbox:checked ~ body {
   padding-left: 0;
 }
 
-/* ============================================================================= */
-/* SIDEBAR NAVIGATION */
-/* ============================================================================= */
-
 nav {
-  width: 250px;
+  width: 300px;
   background-color: var(--bg-nav);
   padding: 2rem;
   position: fixed;
@@ -80,7 +63,6 @@ nav {
   transform: translateX(0);
 }
 
-/* Hide sidebar when checkbox is checked */
 #sidebar-checkbox:checked ~ nav {
   transform: translateX(-100%);
 }
@@ -92,7 +74,6 @@ nav {
   position: relative;
 }
 
-/* Logo Section */
 .logo {
   display: flex;
   align-items: center;
@@ -113,7 +94,6 @@ nav {
   transition: color 0.3s ease;
 }
 
-/* Boards Section */
 .boards-header h4 {
   font-size: 12px;
   letter-spacing: 2.4px;
@@ -167,10 +147,6 @@ nav {
   text-align: left;
 }
 
-/* ============================================================================= */
-/* THEME SWITCHER */
-/* ============================================================================= */
-
 .theme-switcher {
   position: absolute;
   bottom: 100px;
@@ -187,7 +163,6 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* Move theme icons styling here for consistency */
 .theme-icon {
   font-size: 18px;
   cursor: pointer;
@@ -244,14 +219,9 @@ nav {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Move slider when in dark mode */
 [data-theme="dark"] .slider:before {
   transform: translateX(24px);
 }
-
-/* ============================================================================= */
-/* HIDE/SHOW SIDEBAR BUTTONS */
-/* ============================================================================= */
 
 .hide-sidebar-btn {
   position: absolute;
@@ -289,7 +259,6 @@ nav {
   color: #ea5555;
 }
 
-/* Show Sidebar Button */
 .show-sidebar-btn {
   position: fixed;
   bottom: 32px;
@@ -522,10 +491,6 @@ main {
   margin-top: 1rem;
 }
 
-/* ============================================================================= */
-/* MOBILE NAVIGATION */
-/* ============================================================================= */
-
 .mobile-nav-toggle {
   display: none;
   position: fixed;
@@ -560,10 +525,6 @@ main {
 .mobile-overlay.active {
   display: block;
 }
-
-/* ============================================================================= */
-/* MODAL SYSTEM */
-/* ============================================================================= */
 
 .modal {
   display: none;
@@ -601,7 +562,6 @@ main {
   transform: scale(1);
 }
 
-/* Modal Header */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -638,7 +598,6 @@ main {
   color: #ef4444;
 }
 
-/* Form Styling */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -688,7 +647,6 @@ main {
   opacity: 0.7;
 }
 
-/* Error States */
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
@@ -706,7 +664,6 @@ main {
   display: block;
 }
 
-/* Success Message */
 .success-message {
   background-color: #10b981;
   color: white;
@@ -727,7 +684,6 @@ main {
   font-weight: bold;
 }
 
-/* Loading State */
 .loading {
   display: none;
   text-align: center;
@@ -757,7 +713,6 @@ main {
   }
 }
 
-/* Modal Buttons */
 .modal-buttons {
   display: flex;
   gap: 1rem;
@@ -815,10 +770,6 @@ main {
 [data-theme="dark"] .btn-secondary:hover {
   background-color: #E4EBFA;
 }
-
-/* ============================================================================= */
-/* RESPONSIVE DESIGN */
-/* ============================================================================= */
 
 @media screen and (max-width: 768px) {
   .mobile-nav-toggle {
@@ -890,8 +841,7 @@ main {
     margin: 2rem auto 1rem;
     max-width: 280px;
   }
-  
-  /* Mobile Modal Responsive */
+
   .modal-content {
     margin: 10% auto;
     width: 95%;
@@ -931,10 +881,6 @@ main {
   }
 }
 
-/* ============================================================================= */
-/* UTILITY CLASSES */
-/* ============================================================================= */
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -950,10 +896,6 @@ main {
 .no-scroll {
   overflow: hidden;
 }
-
-/* ============================================================================= */
-/* PRINT STYLES */
-/* ============================================================================= */
 
 @media print {
   .sidebar,
