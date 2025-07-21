@@ -10,17 +10,22 @@
   </head>
 
 <body>
-  <!-- Theme checkbox - must be at the top level for CSS selector to work -->
+  <!-- Pure CSS Control Checkboxes -->
   <input type="checkbox" id="theme-checkbox" />
+  <input type="checkbox" id="sidebar-checkbox" />
   
+  <!-- Mobile Navigation Toggle -->
   <button class="mobile-nav-toggle" onclick="toggleMobileSidebar()">☰</button>
   
+  <!-- Sidebar Navigation -->
   <nav>
-    <div>
+    <div class="nav-content">
+      <!-- Logo Section -->
       <div class="logo">
         <img src="logo-light.svg" alt="Kanban Logo" />
       </div>
 
+      <!-- Boards Section -->
       <div class="boards-header">
         <h4>ALL BOARDS (1)</h4>
       </div>
@@ -31,7 +36,7 @@
         </li>
       </ul>
       
-      <!-- Theme Switcher - Using labels for CSS-only functionality -->
+      <!-- Theme Switcher -->
       <div class="theme-switcher">
         <label for="theme-checkbox" class="theme-icon" title="Light Theme">☀️</label>
         <label for="theme-checkbox" class="theme-toggle">
@@ -41,60 +46,66 @@
       </div>
       
       <!-- Hide Sidebar Button -->
-      <button class="hide-sidebar-btn" onclick="toggleSidebar()">
-        <span class="hide-icon">👁️</span>
+      <label for="sidebar-checkbox" class="hide-sidebar-btn">
+        <span class="hide-icon">🔒</span>
         Hide Sidebar
-      </button>
+      </label>
     </div>
   </nav>
 
+  <!-- Show Sidebar Button (appears when sidebar is hidden) -->
+  <label for="sidebar-checkbox" class="show-sidebar-btn">
+    👁️
+  </label>
+
+  <!-- Main Content Area -->
   <div class="main">
-    <!-- New Top Header -->
+    <!-- Top Header -->
     <div class="top-header">
       <h1>Launch Career</h1>
       <button class="add-task-btn" onclick="openAddTaskModal()">+ Add New Task</button>
     </div>
 
+    <!-- Content Area -->
     <div class="content-area">
       <main>
         <!-- TODO Column -->
-        <div class="column">
+        <div class="column" data-status="todo">
           <div class="column-header">
             <span class="dot todo"></span>
             <h4>TO DO</h4>
-            <span class="task-count">(4)</span>
+            <span class="task-count" id="todo-count">(3)</span>
           </div>
           <div id="todo-tasks" class="task-list">
-            <div class="task-card">Launch Epic Career 🚀</div>
-            <div class="task-card">Conquer React ⚛️</div>
-            <div class="task-card">Understand Databases⚙️</div>
-            <div class="task-card">Crush Frameworks 🖼️</div>
+            <div class="task-card" data-task-id="1">Launch Epic Career 🚀</div>
+            <div class="task-card" data-task-id="2">Conquer React ⚛️</div>
+            <div class="task-card" data-task-id="4">Crush Frameworks 🖼️</div>
           </div>
         </div>
 
         <!-- DOING Column -->
-        <div class="column">
+        <div class="column" data-status="doing">
           <div class="column-header">
             <span class="dot doing"></span>
             <h4>DOING</h4>
-            <span class="task-count">(2)</span>
+            <span class="task-count" id="doing-count">(2)</span>
           </div>
           <div id="doing-tasks" class="task-list">
-            <div class="task-card">Master JavaScript💛</div>
-            <div class="task-card">Never Give Up 🏆</div>
+            <div class="task-card" data-task-id="5">Master JavaScript💛</div>
+            <div class="task-card" data-task-id="6">Never Give Up 🏆</div>
           </div>
         </div>
 
         <!-- DONE Column -->
-        <div class="column">
+        <div class="column" data-status="done">
           <div class="column-header">
             <span class="dot done"></span>
             <h4>DONE</h4>
-            <span class="task-count">(2)</span>
+            <span class="task-count" id="done-count">(2)</span>
           </div>
           <div id="done-tasks" class="task-list">
-            <div class="task-card">Explore ES6 Features 🚀</div>
-            <div class="task-card">Have fun 🥳</div>
+            <div class="task-card" data-task-id="7">Explore ES6 Features 🚀</div>
+            <div class="task-card" data-task-id="8">Have fun 🥳</div>
           </div>
         </div>
       </main>
@@ -104,28 +115,81 @@
   <!-- Add Task Modal -->
   <div id="addTaskModal" class="modal">
     <div class="modal-content">
-      <h3>Add New Task</h3>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3>Add New Task</h3>
+        <button type="button" class="close-btn" onclick="closeAddTaskModal()">&times;</button>
+      </div>
+      
+      <!-- Success Message -->
+      <div id="successMessage" class="success-message">
+        Task created successfully!
+      </div>
+      
+      <!-- Task Form -->
       <form id="addTaskForm">
+        <!-- Title Field -->
         <div class="form-group">
           <label for="taskTitle">Title</label>
-          <input type="text" id="taskTitle" placeholder="e.g. Take coffee break" required>
+          <input 
+            type="text" 
+            id="taskTitle" 
+            name="title"
+            placeholder="e.g. Take coffee break" 
+            required
+            maxlength="100"
+          >
+          <div class="error-message">Please enter a task title</div>
         </div>
+        
+        <!-- Description Field -->
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea 
+            id="taskDescription" 
+            name="description"
+            placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little."
+            maxlength="500"
+          ></textarea>
+          <div class="error-message">Description is too long</div>
+        </div>
+        
+        <!-- Status Field -->
         <div class="form-group">
           <label for="taskStatus">Status</label>
-          <select id="taskStatus" required>
+          <select id="taskStatus" name="status" required>
+            <option value="">Select status...</option>
             <option value="todo">To Do</option>
             <option value="doing">Doing</option>
             <option value="done">Done</option>
           </select>
+          <div class="error-message">Please select a status</div>
         </div>
+        
+        <!-- Priority Field -->
+        <div class="form-group">
+          <label for="taskPriority">Priority</label>
+          <select id="taskPriority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="taskLoading" class="loading">
+          Creating task...
+        </div>
+        
+        <!-- Modal Buttons -->
         <div class="modal-buttons">
           <button type="button" class="btn-secondary" onclick="closeAddTaskModal()">Cancel</button>
-          <button type="submit" class="btn-primary">Create Task</button>
+          <button type="submit" class="btn-primary" id="createTaskBtn">Create Task</button>
         </div>
       </form>
     </div>
   </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
