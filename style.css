@@ -152,7 +152,7 @@ nav {
   width: 100%;
   text-align: left;
 }
-/* Hate how this jumps on mobile, fix later 🙄 can get it to change theme yet */
+/* Hate how this jumps on mobile, fix later 🙄 can get it to change theme yet to dark and light */
 .theme-switcher {
   position: absolute;
   bottom: 100px;
