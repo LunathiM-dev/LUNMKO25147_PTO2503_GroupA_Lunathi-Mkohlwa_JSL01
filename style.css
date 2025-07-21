@@ -10,6 +10,7 @@ body {
   overflow-x: hidden;
   transition: all 0.3s ease;
 }
+/* Got this from the figma file */
 :root {
   --bg-primary: #f4f7fd;
   --bg-secondary: #fff;
@@ -45,7 +46,7 @@ body {
 #sidebar-checkbox:checked ~ body {
   padding-left: 0;
 }
-
+/* Sidebar needs animation for mobile maybe */
 nav {
   width: 300px;
   background-color: var(--bg-nav);
@@ -62,6 +63,11 @@ nav {
   border-right: 1px solid var(--border-color);
   transform: translateX(0);
 }
+/* Might need this later */
+.hidden-task {
+  display: none;
+}
+
 
 #sidebar-checkbox:checked ~ nav {
   transform: translateX(-100%);
@@ -146,7 +152,7 @@ nav {
   width: 100%;
   text-align: left;
 }
-
+/* Hate how this jumps on mobile, fix later 🙄 can get it to change theme yet */
 .theme-switcher {
   position: absolute;
   bottom: 100px;
@@ -279,7 +285,7 @@ nav {
   box-shadow: 0 4px 12px rgba(99, 95, 199, 0.4);
 }
 
-/* Show button when sidebar is hidden */
+/* This shows the button when sidebar is hidden */
 #sidebar-checkbox:checked ~ .show-sidebar-btn {
   display: flex;
   animation: slideInLeft 0.3s ease-out;
@@ -302,10 +308,6 @@ nav {
   box-shadow: 0 6px 16px rgba(99, 95, 199, 0.5);
 }
 
-/* ============================================================================= */
-/* MAIN CONTENT AREA */
-/* ============================================================================= */
-
 .main {
   flex-grow: 1;
   display: flex;
@@ -314,12 +316,10 @@ nav {
   transition: margin-left 0.3s ease;
 }
 
-/* Adjust main content when sidebar is hidden */
 #sidebar-checkbox:checked ~ .main {
   margin-left: -300px;
 }
 
-/* Top Header */
 .top-header {
   background-color: var(--bg-secondary);
   padding: 1.5rem 2rem;
@@ -355,7 +355,6 @@ nav {
   transform: translateY(-1px);
 }
 
-/* Content Area */
 .content-area {
   flex-grow: 1;
   overflow-x: auto;
@@ -371,10 +370,6 @@ main {
   width: 100%;
   box-sizing: border-box;
 }
-
-/* ============================================================================= */
-/* KANBAN COLUMNS */
-/* ============================================================================= */
 
 .column {
   flex: 1;
@@ -404,18 +399,15 @@ main {
   gap: 1rem;
 }
 
+/* Might want rounded corners everywhere just cause */
 .task-card {
-  background-color: var(--bg-secondary);
-  padding: 1.5rem 1rem;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px var(--shadow-light);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 19px;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: grab;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+  transition: box-shadow 0.2s;
 }
 
 .task-card:hover {
@@ -423,7 +415,6 @@ main {
   transform: translateY(-2px);
 }
 
-/* New task animation */
 .task-card.new-task {
   animation: slideInDown 0.3s ease-out;
 }
@@ -439,7 +430,6 @@ main {
   }
 }
 
-/* Status dots */
 .dot {
   width: 15px;
   height: 15px;
@@ -456,7 +446,6 @@ main {
   background-color: #67e2ae;
 }
 
-/* Task counter */
 .task-count {
   margin-left: auto;
   font-size: 12px;
@@ -478,7 +467,6 @@ main {
   }
 }
 
-/* Empty state for columns */
 .task-list:empty::after {
   content: "No tasks yet";
   display: block;
@@ -771,6 +759,7 @@ main {
   background-color: #E4EBFA;
 }
 
+/* Modal styles – might improve layout for smaller screens */
 @media screen and (max-width: 768px) {
   .mobile-nav-toggle {
     display: block;
